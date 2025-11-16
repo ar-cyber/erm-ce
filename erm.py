@@ -143,7 +143,7 @@ class Bot(commands.AutoShardedBot):
         # IDs are a security vulnerability.
 
         # Else fall back to the original
-        if user.id == 1394817794427846737:
+        if user.id == 881062877526654987:
             return True
 
         if environment != "CUSTOM": # let's not allow custom bot owners to use jishaku lol
@@ -279,10 +279,10 @@ class Bot(commands.AutoShardedBot):
             # await bot.load_extension('utils.server')
 
             if not bot.is_synced:  # check if slash commands have been synced
-                bot.tree.copy_global_to(guild=discord.Object(id=987798554972143728))
+                bot.tree.copy_global_to(guild=discord.Object(id=1403328821121388674))
             if environment == "DEVELOPMENT":
                 pass
-                # await bot.tree.sync(guild=discord.Object(id=987798554972143728))
+                # await bot.tree.sync(guild=discord.Object(id=1403328821121388674))
             elif environment == "CUSTOM":
                 await self.tree.sync()
                 # Prevent auto syncing
@@ -716,3 +716,4 @@ def run():
 
 if __name__ == "__main__":
     run()
+
