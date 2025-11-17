@@ -5,8 +5,8 @@ from jishaku.codeblocks import codeblock_converter, Codeblock
 from jishaku.cog import STANDARD_FEATURES, OPTIONAL_FEATURES
 from jishaku.features.baseclass import Feature
 
-OWNER = 1394817794427846737
-LOGGING_CHANNEL = 1084950208842039326
+OWNER = 881062877526654987
+LOGGING_CHANNEL = 1440126332506734754
 
 
 class CustomDebugCog(*OPTIONAL_FEATURES, *STANDARD_FEATURES):
@@ -100,3 +100,4 @@ class CustomDebugCog(*OPTIONAL_FEATURES, *STANDARD_FEATURES):
 
 async def setup(bot):
     await bot.add_cog(CustomDebugCog(bot=bot))
+
