@@ -373,7 +373,7 @@ class MultiPaginatorDropdown(discord.ui.Select):
         if interaction.user.id == self.user_id:
             await interaction.response.defer()
             await interaction.message.edit(
-                content=f"<:ERMCheck:1111089850720976906>  **{interaction.user.name},** you're currently viewing the **{self.values[0].replace('_', ' ').title()}** commands!",
+                content=f"<:ERM CECheck:1111089850720976906>  **{interaction.user.name},** you're currently viewing the **{self.values[0].replace('_', ' ').title()}** commands!",
                 embed=self.pages.get(self.values[0]),
             )
         else:
@@ -714,7 +714,7 @@ class LinkPathwayMenu(discord.ui.View):
     # When the confirm button is pressed, set the inner value to `True` and
     # stop the View from listening to more input.
     # We also send the user an ephemeral message that we're confirming their choice.
-    @discord.ui.button(label="ERM", style=discord.ButtonStyle.secondary)
+    @discord.ui.button(label="ERM CE", style=discord.ButtonStyle.secondary)
     async def ERM(self, interaction: discord.Interaction, button: discord.ui.Button):
         if interaction.user.id != self.user_id:
             await interaction.response.defer(ephemeral=True, thinking=True)
@@ -723,7 +723,7 @@ class LinkPathwayMenu(discord.ui.View):
         await interaction.response.defer()
         for item in self.children:
             item.disabled = True
-        self.value = "erm"
+        self.value = "erm ce"
         await interaction.edit_original_response(view=self)
         self.stop()
 
