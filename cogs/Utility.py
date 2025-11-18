@@ -262,7 +262,7 @@ class Utility(commands.Cog):
     @commands.hybrid_command(
         name="modpanel",
         aliases=["panel"],
-        description="Get the link to this server's mod panel.",
+        description="Get the link to this server's mod panel. ( non functional )",
         extras={"category": "Website"},
     )
     @is_staff()
@@ -276,7 +276,7 @@ class Utility(commands.Cog):
                 description="Visit your server's Moderation Panel using the button below.",
             ).set_author(name=ctx.guild.name, icon_url=guild_icon),
             view=LinkView(
-                label="Mod Panel", url=f"https://ermbot.xyz/{ctx.guild.id}/panel"
+                label="Mod Panel", url=f"https://ermce.hueymcspewy.online/{ctx.guild.id}/panel"
             ),
         )
 
@@ -296,38 +296,38 @@ class Utility(commands.Cog):
                 description="Visit your server's Dashboard using the button below.",
             ).set_author(name=ctx.guild.name, icon_url=guild_icon),
             view=LinkView(
-                label="Dashboard", url=f"https://ermbot.xyz/{ctx.guild.id}/dashboard"
+                label="Dashboard", url=f"https://ermce.hueymcspewy.online/{ctx.guild.id}/dashboard"
             ),
         )
 
     @commands.hybrid_command(
         name="support",
         aliases=["support-server"],
-        description="Information about the ERM Support Server",
+        description="Information about the ERM CE Support Server",
         extras={"category": "Utility"},
     )
     async def support_server(self, ctx):
         # using an embed
-        # [**Support Server**](https://discord.gg/5pMmJEYazQ)
+        # [**Support Server**](https://discord.gg/qNVdTzCehy)
 
         await ctx.reply(
             embed=discord.Embed(
                 title="ERM Support",
-                description="You can join the ERM Systems Discord server using the button below.",
+                description="You can join the ERM CE Support Discord server using the button below.",
                 color=BLANK_COLOR,
             ),
-            view=LinkView(label="Support Server", url="https://discord.gg/FAC629TzBy"),
+            view=LinkView(label="Support Server", url="https://discord.gg/qNVdTzCehy"),
         )
 
     @commands.hybrid_command(
         name="about",
         aliases=["info"],
-        description="Information about ERM",
+        description="Information about ERM CE",
         extras={"category": "Utility"},
     )
     async def about(self, ctx):
         # using an embed
-        # [**Support Server**](https://discord.gg/5pMmJEYazQ)
+        # [**Support Server**](https://discord.gg/qNVdTzCehy)
         embed = discord.Embed(
             title="About ERM",
             color=BLANK_COLOR,
@@ -337,11 +337,10 @@ class Utility(commands.Cog):
         embed.add_field(
             name=f"Bot Information",
             value=(
-                "> **Website:** [View Website](https://ermbot.xyz)\n"
-                "> **Support:** [Join Server](https://discord.gg/FAC629TzBy)\n"
-                f"> **Invite:** [Invite Bot](https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&permissions=8&scope=bot%20applications.commands)\n"
-                "> **Documentation:** [View Documentation](https://docs.ermbot.xyz)\n"
-                "> **Desktop:** [Download ERM Desktop](https://ermbot.xyz/download)"
+                "> **Website:** [View Website](https://ermce.hueymcspewy.online)\n"
+                "> **Support:** [Join Server](https://discord.gg/qNVdTzCehy)\n"
+                f"> **Invite:** [Invite Bot](https://discord.com/oauth2/authorize?client_id=1439512432665169961)\n"
+                "> **Documentation:** [View Documentation](https://docs.ermce.hueymcspewy.online)\n"
             ),
             inline=False,
         )
@@ -360,6 +359,7 @@ class Utility(commands.Cog):
         name="generate",
         description="Generate an API key for your server",
         extras={"category": "Utility"},
+        hidden=True
     )
     @is_management()
     @require_settings()
@@ -443,4 +443,5 @@ class Utility(commands.Cog):
 
 async def setup(bot):
     await bot.add_cog(Utility(bot))
+
 
