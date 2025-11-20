@@ -36,7 +36,7 @@ class Search(commands.Cog):
     @commands.hybrid_command(
         name="mywarnings",
         aliases=["mymoderations", "mypunishments", "moderations"],
-        description="Lookup your punishments with ERM.",
+        description="Lookup your punishments with ERM CE.",
         extras={"category": "Search"},
         with_app_command=True,
     )
@@ -52,7 +52,7 @@ class Search(commands.Cog):
         if self.bot.punishments_disabled is True:
             return await failure_embed(
                 ctx,
-                "This command is currently disabled as ERM is currently undergoing maintenance updates. This command will be turned off briefly to ensure that no data is lost during the maintenance. It will be returned shortly.",
+                "This command is currently disabled as ERM CE is currently undergoing maintenance updates. This command will be turned off briefly to ensure that no data is lost during the maintenance. It will be returned shortly.",
             )
 
         bot = self.bot
@@ -85,20 +85,20 @@ class Search(commands.Cog):
         embed_list = [player_information_embed, punishments_embed]
 
         magic_flags = {
-            "ERM Team": 1001972346661384302,
-            "ERM Developer": 1046204873496068176,
-            "ERM Management": 1038597868023447552,
-            "ERM Senior Support": 1028848687927013396,
-            "ERM Support": 1053417531278364713,
-            "ERM Staff": 988055417907200010,
-            "ERM Quality Assurance": 1306431506914218067,
+            "ERM Team": 1440888449098842265,
+            "ERM Developer": 1440888583920549889,
+            "ERM Management": 1440888624286662686,
+            "ERM Senior Support": 1440888663255945247,
+            "ERM Support": 1440888717253546024,
+            "ERM Staff": 1440889102986907710,
+            "ERM Quality Assurance": 1440888769979875368,
         }
 
         magic_flags_reverse = {
             v: k for k, v in magic_flags.items()
         }  # this is reverse mapping for quick lookup
 
-        g_id = 987798554972143728
+        g_id = 1403328821121388674
         guild: discord.Guild = bot.get_guild(g_id)
         applied_flags = set()  # use set to automatically remove duplicates
         member: None | StaffConnection = await bot.staff_connections.fetch_by_spec(
@@ -278,7 +278,7 @@ class Search(commands.Cog):
         if self.bot.punishments_disabled is True:
             return await failure_embed(
                 ctx,
-                "This command is currently disabled as ERM is currently undergoing maintenance updates. This command will be turned off briefly to ensure that no data is lost during the maintenance. It will be returned shortly.",
+                "This command is currently disabled as ERM CE is currently undergoing maintenance updates. This command will be turned off briefly to ensure that no data is lost during the maintenance. It will be returned shortly.",
             )
 
         bot = self.bot
@@ -334,20 +334,20 @@ class Search(commands.Cog):
         ] or ["NoAlerts"]
 
         magic_flags = {
-            "ERM Team": 1001972346661384302,
-            "ERM Developer": 1046204873496068176,
-            "ERM Management": 1038597868023447552,
-            "ERM Senior Support": 1028848687927013396,
-            "ERM Support": 1053417531278364713,
-            "ERM Staff": 988055417907200010,
-            "ERM Quality Assurance": 1306431506914218067,
+            "ERM Team": 1440888449098842265,
+            "ERM Developer": 1440888583920549889,
+            "ERM Management": 1440888624286662686,
+            "ERM Senior Support": 1440888663255945247,
+            "ERM Support": 1440888717253546024,
+            "ERM Staff": 1440889102986907710,
+            "ERM Quality Assurance": 1440888769979875368,
         }
 
         magic_flags_reverse = {
             v: k for k, v in magic_flags.items()
         }  # this is reverse mapping for quick lookup
 
-        guild_id = 987798554972143728
+        guild_id = 1403328821121388674
         guild: discord.Guild = bot.get_guild(guild_id)
         applied_flags = set()  # use set to automatically remove duplicates
         member: None | StaffConnection = await bot.staff_connections.fetch_by_spec(
@@ -537,3 +537,4 @@ class Search(commands.Cog):
 
 async def setup(bot):
     await bot.add_cog(Search(bot))
+
