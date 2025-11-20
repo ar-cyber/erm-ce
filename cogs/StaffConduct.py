@@ -17,9 +17,9 @@ from menus import (
     ChannelSelect,
 )
 
-successEmoji = "<:ERMCheck:1111089850720976906>"
-pendingEmoji = "<:ERMPending:1111097561588183121>"
-errorEmoji = "<:ERMClose:1111101633389146223>"
+successEmoji = "<:Greentick:1440880745559232543>"
+pendingEmoji = "<:Log:1440881188981047317>"
+errorEmoji = "<:xmark:1440881974989291531>"
 embedColour = 0xED4348
 
 
@@ -28,7 +28,7 @@ class StaffConduct(commands.Cog):
         self.bot = bot
 
     async def check_settings(self, ctx: commands.Context):
-        error_text = "<:ERMClose:1111101633389146223> **{},** this server isn't setup with ERM! Please run `/setup` to setup the bot before trying to manage infractions".format(
+        error_text = "<:xmark:1440881974989291531> **{},** this server isn't setup with ERM CE! Please run `/setup` to setup the bot before trying to manage infractions".format(
             ctx.author.name
         )
         guild_settings = await self.bot.settings.find_by_id(ctx.guild.id)
@@ -83,24 +83,24 @@ class StaffConduct(commands.Cog):
                 return
 
             embed = discord.Embed(
-                title="<:ERMAlert:1113237478892130324> Information", color=embedColour
+                title="<:Error:1440880674885075117> Information", color=embedColour
             )
             embed.set_thumbnail(
                 url="https://cdn.discordapp.com/emojis/1113210855891423302.webp?size=96&quality=lossless"
             )
             embed.add_field(
-                name="<:ERMList:1111099396990435428> What is Staff Conduct?",
-                value=">>> Staff Conduct is a module within ERM which allows for infractions on your Staff team. Not only does it allow for manual punishments and infractions to others to be expanded and customised, it also allows for automatic punishments for those that don't meet activity requirements, integrating with other ERM modules.",
+                name="<:Log:1440881188981047317> What is Staff Conduct?",
+                value=">>> Staff Conduct is a module within ERM CE which allows for infractions on your Staff team. Not only does it allow for manual punishments and infractions to others to be expanded and customised, it also allows for automatic punishments for those that don't meet activity requirements, integrating with other ERM CE modules.",
                 inline=False,
             )
             embed.add_field(
-                name="<:ERMList:1111099396990435428> How does this module work?",
+                name="<:Log:1440881188981047317> How does this module work?",
                 value=">>> For manual punishment assignment, you make your own Infraction Types, as dictated throughout this setup wizard. You can then infract staff members by using `/infract`, which will assign that Infraction Type to the staff individual. You will be able to see all infractions that individual has received, as well as any notes or changes that have been made over the course of their staff career.",
                 inline=False,
             )
             embed.add_field(
-                name="<:ERMList:1111099396990435428> If I have a Strike 1/2/3 system, do I have them as separate types?",
-                value=">>> In the case where you have a counting infraction system, you can tell ERM to count the strikes automatically! It will then take the according actions that correspond with that infraction amount.",
+                name="<:Log:1440881188981047317> If I have a Strike 1/2/3 system, do I have them as separate types?",
+                value=">>> In the case where you have a counting infraction system, you can tell ERM CE to count the strikes automatically! It will then take the according actions that correspond with that infraction amount.",
                 inline=False,
             )
             embed.set_footer(
