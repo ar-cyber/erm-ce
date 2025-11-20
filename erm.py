@@ -148,7 +148,7 @@ class Bot(commands.AutoShardedBot):
         if user.id == 881062877526654987:
             return True
 
-        if environment != "CUSTOM": # let's not allow custom bot owners to use jishaku lol
+        if environment != "CUSTOM": # let's not allow custom bot owners to use jishaku lol 
             return await super().is_owner(user)
         else:
             return False
@@ -668,7 +668,7 @@ elif environment == "ALPHA":
         bot_token = config("ALPHA_BOT_TOKEN")
     except decouple.UndefinedValueError:
         bot_token = ""
-    logging.info("Using ERM V4 Alpha token...")
+    logging.info("Using ERM CE V4 Alpha token...")
 elif environment == "CUSTOM":
     bot_token = config("CUSTOM_BOT_TOKEN")
     logging.info("Using custom bot token...")
@@ -749,6 +749,7 @@ def run():
 
 if __name__ == "__main__":
     run()
+
 
 
 
