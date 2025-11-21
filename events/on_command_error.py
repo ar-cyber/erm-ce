@@ -318,15 +318,16 @@ class OnCommandError(commands.Cog):
                         title=f"{self.bot.emoji_controller.get_emoji('error')} Command Failure",
                         description="The command you were attempting to run failed.\nContact ERM Support for assistance.",
                         color=RED_COLOR,
-                    ).add_field(name="Error ID", value=f"[`{error_id}`]({config('SENTRY_BASE_URL') + error_link})", inline=False),
+                    ).add_field(name="Error ID", value=f"[`{error_id}`]({config('SENTRY_BASE_URL', default='') + error_link})", inline=False),
                     view=View().add_item(
                         Button(
-                            label="Contact ERM Support",
+                            label="Contact ERM CE Support",
                             style=discord.ButtonStyle.link,
-                            url="https://discord.gg/FAC629TzBy",
+                            url="https://discord.gg/vBdnMbkMHG",
                         )
                     ),
                 )
 
 async def setup(bot):
     await bot.add_cog(OnCommandError(bot))
+
