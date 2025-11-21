@@ -5160,7 +5160,7 @@ class AssociationConfigurationView(discord.ui.View):
                 else:
                     if iterating_item.label == label:
                         item = iterating_item
-break
+            break
             if use_configuration is None:
                 for index, defa in enumerate(defaults):
                     if defa is None:
