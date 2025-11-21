@@ -42,12 +42,13 @@ class Configuration(commands.Cog):
     @commands.guild_only()
     @commands.hybrid_command(
         name="setup",
-        description="Begin using ERM!",
+        description="Begin using ERM CE!",
         extras={"category": "Configuration"},
     )
     @is_management()
     async def _setup(self, ctx: commands.Context):
         await log_command_usage(self.bot, ctx.guild, ctx.author, f"Setup")
+        await ctx.defer() # Acknowledge the interaction to prevent timeout
         bot = self.bot
         from utils.constants import base_configuration
 
@@ -1224,4 +1225,5 @@ class Configuration(commands.Cog):
 
 async def setup(bot):
     await bot.add_cog(Configuration(bot))
+
 
