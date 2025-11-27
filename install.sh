@@ -1,17 +1,24 @@
 #!/bin/bash
 
-# Check if running as root
-if [[ "$EUID" -ne 0 ]]; then
-    echo "You are not running this script as root."
-    read -p "Do you want to run it with sudo? (y/n) " response
-    if [[ "$response" == "y" ]]; then
-        exec sudo "$0" "$@"
-    else
-        echo "Exiting the script. Some features may not work without root privileges."
-    fi
+# Prompt user for MONGO_URI
+read -p "Enter MONGO_URI: " MONGO_URI
+while [[ -z "$MONGO_URI" ]]; do
+    echo "MONGO_URI is required. Please enter it."
+    read -p "Enter MONGO_URI: " MONGO_URI
+done
+
+# Prompt user for BOT_TOKEN
+read -p "Enter BOT_TOKEN: " BOT_TOKEN
+while [[ -z "$BOT_TOKEN" ]]; do
+    echo "BOT_TOKEN is required. Please enter it."
+    read -p "Enter BOT_TOKEN: " BOT_TOKEN
+done
+
+# Append to .env file if variables are not present
+if ! grep -q "MONGO_URI=" /opt/erm-ce/.env; then
+    echo "MONGO_URI=${MONGO_URI}" >> /opt/erm-ce/.env
 fi
 
-# [Original content continues here...]
-
-# Example commands with sudo for administrative actions
-# sudo some_command_that_requires_admin_privileges
+if ! grep -q "BOT_TOKEN=" /opt/erm-ce/.env; then
+    echo "BOT_TOKEN=${BOT_TOKEN}" >> /opt/erm-ce/.env
+fi
