@@ -191,42 +191,37 @@ async def punishment_autocomplete(
     interaction: discord.Interaction, current: str
 ) -> typing.List[app_commands.Choice[str]]:
     bot = interaction.client
-Data = await bot.punishment_types.find_by_id(interaction.guild.id)
-default_punishments = ["Warning", "Kick", "Ban", "BOLO"]
+    Data = await bot.punishment_types.find_by_id(interaction.guild.id)
+    default_punishments = ["Warning", "Kick", "Ban", "BOLO"]
 
-# Check if there’s no data for this guild
-if Data is None:
-    return [app_commands.Choice(name=p, value=p) for p in default_punishments]
-
-# Now it’s safe to access Data
-enabled_punishments = Data.get("default_punishments", [])
+    # If there’s no data for this guild, return defaults
     if Data is None:
-        return [
-            app_commands.Choice(name=item, value=item)
-            for item in default_punishments
-        ]
-    else:
-        ndt = []
-        for item in Data["types"]:
-            if item not in default_punishments:
-                ndt.append(item)
-        enabled_defaults = {
-            p["name"].lower()
-            for p in enabled_punishments
-            if p.get("enabled", False)
-        }
-        filtered_punishments = [
-            name.capitalize() for name in ["warning", "kick", "ban", "bolo"] if name in enabled_defaults
-        ]
-        return [
-            app_commands.Choice(
-                name=(
-                    item_identifier := item if isinstance(item, str) else item["name"]
-                ),
-                value=item_identifier,
-            )
-            for item in ndt + filtered_punishments
-        ]
+        return [app_commands.Choice(name=p, value=p) for p in default_punishments]
+
+    # Safe to access Data now
+    enabled_punishments = Data.get("default_punishments", [])
+    ndt = []
+    for item in Data.get("types", []):
+        if item not in default_punishments:
+            ndt.append(item)
+
+    enabled_defaults = {
+        p["name"].lower()
+        for p in enabled_punishments
+        if p.get("enabled", False)
+    }
+
+    filtered_punishments = [
+        name.capitalize() for name in ["warning", "kick", "ban", "bolo"] if name in enabled_defaults
+    ]
+
+    return [
+        app_commands.Choice(
+            name=(item_identifier if isinstance(item_identifier := item, str) else item["name"]),
+            value=item_identifier,
+        )
+        for item in ndt + filtered_punishments
+    ]
 
 async def user_autocomplete(
     interaction: discord.Interaction, current: str
@@ -292,4 +287,5 @@ async def infraction_type_autocomplete(
             infraction_types.append(app_commands.Choice(name=name, value=name))
 
     return infraction_types[:25]  # Discord limits to max 25 choices
+
 
